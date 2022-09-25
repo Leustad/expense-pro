@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+
+{% block title %}
+| Register
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Login Form -->
+        <form method="POST" action="/register">
+            <div id="from-header">
+                <p>Register</p>
+            </div>
+            {{ form.hidden_tag() }}
+            {{ form.username(placeholder='username', class="fadeIn first") }}
+            {{ form.email(placeholder='email', class="fadeIn second") }}
+            {{ form.password(placeholder='password', class="fadeIn third") }}
+            <input type="submit" class="fadeIn fourth" value="Register">
+            <div>
+                <a class="underlineHover" href="{{ url_for('login.login') }}">Back to Login</a>
+            </div>
+
+        </form>
+        <!-- Remind Passowrd -->
+        <div id="form-footer">
+            <a class="underlineHover" href="{{ url_for('reset_password.reset_request') }}">Forgot Password ?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

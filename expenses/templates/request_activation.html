@@ -1,0 +1,40 @@
+{% extends '_base.html' %}
+
+{% block title %}
+   | {{ title }}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Login Form -->
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div id="from-header">
+                <p>Request Account Activation Email</p>
+            </div>
+
+            {{ form.email(placeholder='Email', class="form-control fadeIn second") }}
+
+            <div>
+                {% for error in form.email.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <input type="submit" class="fadeIn second" value="Request Account Activation">
+            <div>
+                <a class="underlineHover" href="{{ url_for('login.login') }}">Login</a>
+            </div>
+        </form>
+        <!-- Remind Passowrd -->
+        <div id="form-footer">
+            <a class="underlineHover" href="{{ url_for('reset_password.reset_request') }}">Forgot Password ?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
